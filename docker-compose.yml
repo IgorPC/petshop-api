@@ -1,0 +1,32 @@
+version: '3'
+
+networks:
+  connection:
+    driver: bridge
+
+services:
+  node:
+    build: .
+    container_name: petshop
+    ports:
+    - "80:3000"
+    - "443:443"
+    volumes:
+    - ./:/var/www
+    links:
+    - db
+    networks:
+    - connection
+
+  db:
+    image: mysql:8.0
+    container_name: petshop_db
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=petshop
+    volumes:
+    - /var/lib/mysql  
+    networks:
+    - connection
+    ports:
+      - "8081:3306"

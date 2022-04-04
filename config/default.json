@@ -1,0 +1,12 @@
+{
+    "db": {
+        "database": "petshop",
+        "user": "root",
+        "password": "root",
+        "host": "petshop_db",
+        "connection": "mysql"
+    },
+    "app": {
+        "port": 3000
+    }
+}
